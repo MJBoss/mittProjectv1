@@ -28,7 +28,6 @@
                                 
                             <?php
                         //include our connection
-                    
                         $database = new Connection();
                         $db = $database->open();
                         try{    
