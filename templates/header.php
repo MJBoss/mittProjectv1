@@ -223,6 +223,12 @@
                                         <a href="../pages/student-table.php">Student</a>
                                     </li>
                                     <li>
+                                        <a href="../pages/enroll-table.php">Enroll</a>
+                                    </li>
+                                    <li>
+                                        <a href="../pages/subject-table.php">Subject</a>
+                                    </li>
+                                    <li>
                                         <a href="../pages/blank.php">Blank Page</a>
                                     </li>
                                     <li>

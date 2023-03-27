@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Students</h1>
+        <h1 class="page-header">Subjects</h1>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i> Add</a>
@@ -45,10 +45,9 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Student ID</th>
-                                    <th>Name</th>
-                                    <th>Gender(s)</th>
-                                    <th>Course</th>
+                                    <th>Id</th>
+                                    <th>Code</th>
+                                    <th>Desc</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -59,21 +58,18 @@
                         $database = new Connection();
                         $db = $database->open();
                         try{    
-                            $sql = 'SELECT * FROM tbl_students
-                            INNER JOIN tbl_department
-                            ON tbl_students.dept_id = tbl_department.dept_id';
+                            $sql = 'SELECT * FROM tbl_course';
                             foreach ($db->query($sql) as $row) {                              
                             ?>
                                 <tr>
-                                    <td><?php echo $row["s_id"]?></td>
-                                    <td><?php echo $row["s_name"]?></td>
-                                    <td><?php echo $row["s_gender"]?></td>
-                                    <td><?php echo $row["dept_code"]?></td>
+                                    <td><?php echo $row["crs_id"]?></td>
+                                    <td><?php echo $row["crs_code"]?></td>
+                                    <td><?php echo $row["crs_desc"]?></td>
                                     <td>
-                                        <a href="#edit_<?php echo $row['s_id'];?>" class="btn btn-success btn-xs" data-toggle="modal">Edit</a>
-                                        <a href="#delete_<?php echo $row['s_id'];?>" class="btn btn-danger btn-xs" data-toggle="modal">Remove</a>
+                                        <a href="#edit_<?php echo $row['crs_id'];?>" class="btn btn-success btn-xs" data-toggle="modal">Edit</a>
+                                        <a href="#delete_<?php echo $row['crs_id'];?>" class="btn btn-danger btn-xs" data-toggle="modal">Remove</a>
                                     </td>
-                                    <?php include('../modals/student-details.modal.php'); ?>
+                                    <?php include('../modals/subject-details.modal.php'); ?>
                                 </tr>
                                 <?php
                             }
@@ -111,42 +107,17 @@
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                <form action="../actions/add-student.php" method="post">
+                <form action="../actions/add-subject.php" method="post">
                     
-                
+                   
                     <div class="form-group">
-                        <label>School ID</label>
-                        <input class="form-control" name="sid" placeholder="School ID" readonly>
+                        <label>Course Code</label>
+                        <input class="form-control" name="ccode" placeholder="Course Code" required>
                     </div>
                     <div class="form-group">
-                        <label>Name</label>
-                        <input class="form-control" name="sname" placeholder="Student Name" required>
+                        <label>Course Description</label>
+                        <input class="form-control" name="cdesc" placeholder="Course Description" required>
                     </div>
-                    <div class="form-group">
-                        <label>Gender</label>
-                        <input class="form-control" name="sgender" placeholder="Student Gender" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Status</label>
-                        <input class="form-control" name="sstatus" placeholder="Student Status" required>
-                    </div>
-                    <?php
-                    include "../includes/connect.inc.php"; 
-                    
-                    $sql="SELECT * FROM tbl_department"; 
-
-                    echo "<div class='form-group'>";
-                    echo "<label>Course</label>";
-                    echo "<select name='scourse' value='' class='form-control'>Course</option>"; 
-                    
-                    foreach ($conn->query($sql) as $row){//Array or records stored in $row
-                    echo "<option value=$row[dept_id]>$row[dept_desc]</option>"; 
-                    }
-                    echo "</select>";
-                    echo"</div>";
-
-                    ?>
-
 
                     
                 
@@ -162,6 +133,7 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
 
 
 

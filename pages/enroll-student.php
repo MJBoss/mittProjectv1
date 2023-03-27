@@ -112,8 +112,6 @@
             </div>
             <div class="modal-body">
                 <form action="../actions/add-student.php" method="post">
-                    
-                
                     <div class="form-group">
                         <label>School ID</label>
                         <input class="form-control" name="sid" placeholder="School ID" readonly>
@@ -163,6 +161,44 @@
 </div>
 <!-- /.modal -->
 
+<!-- Edit Modal -->
+<div class="modal fade" id="edit_<?php echo $row['s_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Details</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" style="position:relative; top:7px;">Student ID:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="name" value="<?php echo $row['s_id']; ?>">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" style="position:relative; top:7px;">Name:</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="name" value="<?php echo $row['s_name']; ?>">
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Modal Body -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="../includes/logout.inc.php">Logout</a>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- /.modal -->
 
 
 <?php

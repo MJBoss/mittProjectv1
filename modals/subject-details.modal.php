@@ -1,5 +1,5 @@
 <!-- Edit-->
-<div class="modal fade" id="edit_<?php echo $row['s_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit_<?php echo $row['crs_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,41 +9,34 @@
                 </button>
             </div>
             <!-- Modal Body -->
-            <form action="../actions/edit-student.php" method="post">
+            <form action="../actions/edit-subject.php" method="post">
                 <div class="modal-body">
                     <div class="row form-group">
                         <div class="col-sm-4">
                             <label class="control-label" style="position:relative; top:7px;">Student ID:</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="sid" value="<?php echo $row['s_id']; ?>" readonly>
+                            <input type="text" class="form-control" name="cid" value="<?php echo $row['crs_id']; ?>" readonly>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-4">
-                            <label class="control-label" style="position:relative; top:7px;">Name:</label>
+                            <label class="control-label" style="position:relative; top:7px;">Course Code:</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="sname" value="<?php echo $row['s_name']; ?>">
+                            <input type="text" class="form-control" name="ccode" value="<?php echo $row['crs_code']; ?>">
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-sm-4">
-                            <label class="control-label" style="position:relative; top:7px;">Gender:</label>
+                            <label class="control-label" style="position:relative; top:7px;">Course Description</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="sgender" value="<?php echo $row['s_gender']; ?>">
+                            <input type="text" class="form-control" name="cdesc" value="<?php echo $row['crs_desc']; ?>">
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="col-sm-4">
-                            <label class="control-label" style="position:relative; top:7px;">Status:</label>
-                        </div>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="sstatus" value="<?php echo $row['s_status']; ?>">
-                        </div>
-                    </div>
+                    
                 </div>
             
             <!-- End of Modal Body -->
@@ -58,18 +51,18 @@
 </div>
 
 <!-- Delete -->
-<div class="modal fade" id="delete_<?php echo $row['s_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete_<?php echo $row['crs_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <center><h4 class="modal-title" id="myModalLabel">Delete Member</h4></center>
             </div>
-            <form action="../actions/delete-student.php" method="post">
+            <form action="../actions/delete-subject.php" method="post">
             <div class="modal-body">	
             	<p class="text-center">Are you sure you want to Delete</p>
-				<h2 class="text-center"><?php echo $row['s_name']; ?></h2>
-                <input type="hidden" name="sid" value="<?php echo $row['s_id']; ?>">
+				<h2 class="text-center"><?php echo $row['crs_code']; ?></h2>
+                <input type="hidden" name="cid" value="<?php echo $row['crs_id']; ?>">
 			</div>
             <div class="modal-footer">
                 

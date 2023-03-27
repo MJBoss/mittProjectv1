@@ -6,10 +6,9 @@ include("../includes/connection.inc.php");
 include("../includes/connect.inc.php");
 
 if(isset($_POST["submit"])){
-    $name = $_POST["sname"];
-    $gender = $_POST["sgender"];
-    $status = $_POST["sstatus"];
-    $course = $_POST["scourse"];
+    $name = $_POST["student"];
+    $sem = $_POST["sem"];
+    $sy = $_POST["sy"];
     
 
     // $sql = "SELECT * FROM tbl_sched WHERE room_id = '$room' AND day_id = '$day' AND  ('$st' BETWEEN start_time AND end_time
@@ -24,7 +23,7 @@ if(isset($_POST["submit"])){
         $database = new Connection();
         $dbs = $database->open();
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO `tbl_students`(`s_name`, `dept_id`, `s_gender`, `s_status`) VALUES ('$name', '$course', '$gender','$status')";
+        $sql = "INSERT INTO `tbl_enroll`(`sy_id`, `sem_id`, `s_id`) VALUES ('$sy', '$sem', '$name')";
         $conn->exec($sql);
         echo "New record created successfully";
     } catch(PDOException $e) {
@@ -32,8 +31,8 @@ if(isset($_POST["submit"])){
     }
 
     $conn = null;
-    header("location: ../pages/student-table.php?error=success");
+    header("location: ../pages/enroll-table.php?error=success");
 }else{
-    header("location: ../pages/student-table.php?error=failed");
+    header("location: ../pages/enroll-table.php?error=failed");
 }
 ?>
