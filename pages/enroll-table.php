@@ -80,10 +80,9 @@
                                     <td><?php echo $row["dept_code"]?></td>
                                     <td><?php echo $row["yr_desc"]?></td>
                                     <td>
-                                        <form action="blank.php" method="post">
+                                        <form action="../actions/add-sub.php" method="post">
                                             <button type="submit" name ="submit" value="<?php echo $row['en_id'];?>" class="btn btn-primary btn-xs" data-toggle="modal">Add Subjects</a>
                                         </form>
-                                        
                                     </td>
                                    
                                 </tr>
@@ -177,6 +176,25 @@
                     echo"</div>";
 
                     ?>
+
+                    <?php
+                    include "../includes/connect.inc.php"; 
+                    
+                    $sql="SELECT * FROM tbl_year"; 
+
+                    echo "<div class='form-group'>";
+                    echo "<label>School Year</label>";
+                    echo "<select name='year' value='' class='form-control'>School Year</option>"; 
+                    
+                    foreach ($conn->query($sql) as $row){//Array or records stored in $row
+                    echo "<option value=$row[yr_id]>$row[yr_desc]</option>"; 
+                    }
+                    echo "</select>";
+                    echo"</div>";
+
+                    ?>
+
+                    
 
 
                     
